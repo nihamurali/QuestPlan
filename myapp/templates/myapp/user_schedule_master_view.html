@@ -1,0 +1,57 @@
+{% extends 'myapp/user_base.html' %}
+{% load static %}
+{% block title %}Schedule Details{% endblock %}
+{% block body %}
+<center>
+    <h1>Schedule Details</h1>
+    <div class="container">
+        {% if msg %}
+		<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  			<strong>{{msg}}..!</strong>
+  			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    			<span aria-hidden="true">&times;</span>
+  			</button>
+		</div>
+		{% endif %}
+    <form role="form" name="frm" >
+        {% csrf_token %}
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Subjects</th>
+                <th>Total Duration</th>
+                <th>Date/Time</th>
+                <th>Status</th>
+                
+                <th>Action</th>
+            </tr>
+            </thead>
+            {% for im_obj in schedule_master_list %}
+            <tbody>
+            <tr>
+                <td>{{ im_obj.id }}</td>
+                <td>{{ im_obj.subjects }}</td>
+                <td>{{ im_obj.total_duration }}</td>
+                <td>{{ im_obj.dt }}{{im_obj.tm}}</td>
+                <td>{{ im_obj.status }}</td>
+                <td >
+
+                    <a class="btn btn-info" href="../user_marklist_details_view?schedule_master_id={{ im_obj.id }}">Mark List</a>
+                    <a class="btn btn-info" href="../user_schedule_details_view?schedule_master_id={{ im_obj.id }}">Subject Details</a>
+                    <br><br>
+                    <a class="btn btn-danger" href="../admin_schedule_master_delete?id={{ im_obj.id }}">Delete</a>
+                    <a class="btn btn-info" href="../user_generate_planner_view?schedule_master_id={{ im_obj.id }}">Generated Planner</a>
+                    <br><br>
+                 
+                </td>
+            </tr>
+            <tbody>
+            {% endfor %}
+        </table>
+
+    </form>
+    </div>
+
+</center>
+{% endblock %}

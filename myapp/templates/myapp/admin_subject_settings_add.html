@@ -1,0 +1,28 @@
+{% extends 'myapp/admin_base.html' %}
+{% load static %}
+{% block title %}Add Subject{% endblock %}
+{% block body %}
+<center>
+    <h2><font color="#366092">Add Subject</font></h2>
+<div class="container">
+     {% if msg %}
+		<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  			<strong>{{msg}}..!</strong>
+  			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    			<span aria-hidden="true">&times;</span>
+  			</button>
+		</div>
+		{% endif %}
+    <form role="form" name="frm" action="{% url 'admin_subject_settings_add' %}" method="post">
+            {% csrf_token %}
+        <div class="form-group">
+            <label >Name</label>
+            <input class="form-control" type="text"  id="subject_name" name="subject_name" placeholder="Enter subject name" required>
+        </div>
+        <button type="submit" class="btn btn-info" id="bt" name="bt">Add</button>
+        <button type="reset" class="btn btn-info" id="rt" name="rt">Reset</button>
+          <br><br>
+    </form>
+</div>
+</center>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'myapp/user_base.html' %}
+{% load static %}
+{% block title %}Modules Add{% endblock %}
+{% block body %}
+<center>
+    <h2><font color="#366092">Modules Add</font></h2>
+<div class="container">
+    <form name="frm"  role="form" action="{% url 'user_module_details_add' %}" method="post">
+            {% csrf_token %}
+            <!-- sub1_id, sub1_mark, sub2_id, sub2_mark, sub3_id, sub3_mark, sub4_id, sub4_mark, sub5_id, sub5_mark -->
+        <input type="hidden" class="form-control" id="schedule_details_id" name="schedule_details_id"
+            value="{{schedule_details_id}}" required="required">
+        <div class="form-group">
+            <label for="module_title">Title</label>
+            <input type="text" class="form-control" id="module_title" name="module_title"
+            value="" required="required">
+        </div>
+        
+        <div class="form-group">
+            <label for="module_description">Description</label>
+            <textarea class="form-control" id="module_description" name="module_description"
+            required="required"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success" id="bt" name="bt">Add</button>
+        <button type="reset" class="btn btn-warning" id="rt" name="rt">Reset</button>
+        <br><br>
+        {{msg}}
+    </form>
+</div>
+</center>
+{% endblock %}

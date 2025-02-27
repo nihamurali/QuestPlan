@@ -1,0 +1,94 @@
+{% extends 'myapp/user_base.html' %}
+{% load static %}
+{% block title %}Question Paper{% endblock %}
+{% block body %}
+<center>
+<h2><font color="#366092">Question Paper</font></h2>
+<div class="container">
+    <!-- # question_bank1 - id, user_id, doc_id, question, answer, mark
+    # question_bank2 - id, user_id, doc_id, question, answer, mark
+    # question_bank3 - id, user_id, doc_id, question, op1, op2, op3, op4, answer, mark -->
+    
+    <form name="frm"  role="form" action="" method="post">
+            {% csrf_token %}
+        <h3>Question Set1</h3>
+        <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+            <!-- <th>ID</th> -->
+            <th>Question</th>
+            <!-- <th>Answer</th> -->
+            <th>Mark</th>
+            <!-- <th>Action</th> -->
+            </tr>
+        </thead>
+        {% for qb in qb1_list %}
+        <tbody>
+            <tr class="info ">
+            <!-- <td>{{ c.id }}</td> -->
+            <td >{{ qb.question }}</td>
+            <!-- <td>{{qb.answer}}</td> -->
+            <td>{{qb.mark}}</td>
+            </tr>
+        </tbody>
+        {% endfor %}
+        </table>
+    
+        <h3>Question Set2</h3>
+        <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+            <!-- <th>ID</th> -->
+            <th>Question</th>
+            <!-- <th>Answer</th> -->
+            <th>Mark</th>
+            <!-- <th>Action</th> -->
+            </tr>
+        </thead>
+        {% for qb in qb2_list %}
+        <tbody>
+            <tr class="info ">
+            <!-- <td>{{ c.id }}</td> -->
+            <td >{{ qb.question }}</td>
+            <!-- <td>{{qb.answer}}</td> -->
+            <td>{{qb.mark}}</td>
+            </tr>
+        </tbody>
+        {% endfor %}
+        </table>
+    
+        <h3>Question Set3</h3>
+        <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+            <!-- <th>ID</th> -->
+            <th>Question</th>
+            <th>Option1</th>
+            <th>Option2</th>
+            <th>Option3</th>
+            <th>Option4</th>
+            <!-- <th>Answer</th> -->
+            <th>Mark</th>
+            <!-- <th>Action</th> -->
+            </tr>
+        </thead>
+        {% for qb in qb3_list %}
+        <tbody>
+            <tr class="info ">
+            <!-- <td>{{ c.id }}</td> -->
+            <td >{{ qb.question }}</td>
+            <td>{{qb.op1}}</td>
+            <td>{{qb.op2}}</td>
+            <td>{{qb.op3}}</td>
+            <td>{{qb.op4}}</td>
+            <!-- <td>{{qb.answer}}</td> -->
+            <td>{{qb.mark}}</td>
+            </tr>
+        </tbody>
+        {% endfor %}
+        </table>
+    
+    </form>
+</div>
+</center>
+{% endblock %}
